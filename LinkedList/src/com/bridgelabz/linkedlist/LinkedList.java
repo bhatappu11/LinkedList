@@ -22,7 +22,18 @@ public class LinkedList<K> {
 			this.head.setNext(tempNode);
 		}
 	}
-	
+	public void append(Node<K> node) {
+		if(this.head == null) {
+			this.head = node;
+		}
+		if(this.tail == null) {
+			this.tail = node;
+		}
+		else {
+			this.tail.setNext(node);
+			this.tail = node;
+		}
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
