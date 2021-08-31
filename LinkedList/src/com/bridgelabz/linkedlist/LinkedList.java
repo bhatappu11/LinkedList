@@ -92,6 +92,15 @@ public class LinkedList<K> {
 			}
 		}
 	}
+	public int size() {
+		int linkedListSize = 0;
+		Node<K> tempNode = head;
+		while(tempNode !=null) {
+			tempNode = tempNode.getNext();
+			linkedListSize++;
+		}
+		return linkedListSize;
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
