@@ -10,10 +10,10 @@ public class LinkedList<K> {
 	}
 	
 	public void add(Node<K> node) {
-		if(this.head==null) {
+		if(this.head == null) {
 			this.head = node;
 		}
-		if(this.tail==null) {
+		if(this.tail == null) {
 			this.tail = node;
 		}
 		else {
@@ -22,6 +22,7 @@ public class LinkedList<K> {
 			this.head.setNext(tempNode);
 		}
 	}
+	
 	
 	public void printNodes() {
 		Node<K> temp = head;
