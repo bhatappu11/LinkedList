@@ -66,6 +66,17 @@ public class LinkedList<K> {
 			tempNode.setNext(null);
 		}
 	}
+	public void search(K key) {
+		Node<K> tempNode = head;
+		while (tempNode != null && !tempNode.getKey().equals(key)) {
+			tempNode = tempNode.getNext();
+		}
+		if (tempNode == null) {
+			System.err.println("Cannot find " + key);
+			return;
+		}
+		System.out.println("Key found");
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
