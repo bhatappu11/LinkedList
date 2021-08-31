@@ -34,6 +34,18 @@ public class LinkedList<K> {
 			this.tail = node;
 		}
 	}
+	public void insert(Node<K> node,K key) {
+		Node<K> tempNode = head;
+		while(tempNode!=null && !tempNode.getKey().equals(key)) {
+			tempNode = tempNode.getNext();
+		}
+		if(tempNode == null)
+			System.err.println("key not found");
+		if(this.tail.equals(tempNode))
+			this.tail = node;
+		node.setNext(tempNode.getNext());
+		tempNode.setNext(node);
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
