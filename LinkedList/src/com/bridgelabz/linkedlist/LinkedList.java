@@ -46,6 +46,12 @@ public class LinkedList<K> {
 		node.setNext(tempNode.getNext());
 		tempNode.setNext(node);
 	}
+	public void pop() {
+		if(head == null) {
+			return;
+		}
+		head = head.getNext();
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
