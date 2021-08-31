@@ -35,16 +35,13 @@ public class LinkedList<K> {
 		}
 	}
 	public void insert(Node<K> node,K key) {
-		Node<K> tempNode = head;
-		while(tempNode!=null && !tempNode.getKey().equals(key)) {
-			tempNode = tempNode.getNext();
-		}
-		if(tempNode == null)
-			System.err.println("key not found");
-		if(this.tail.equals(tempNode))
+		Node<K> keyNode = search(key);
+		if(keyNode == null)
+			return;
+		if(this.tail.equals(keyNode))
 			this.tail = node;
-		node.setNext(tempNode.getNext());
-		tempNode.setNext(node);
+		node.setNext(keyNode.getNext());
+		keyNode.setNext(node);
 	}
 	public void pop() {
 		if(head == null) {
@@ -66,16 +63,15 @@ public class LinkedList<K> {
 			tempNode.setNext(null);
 		}
 	}
-	public void search(K key) {
+	public Node<K> search(K key) {
 		Node<K> tempNode = head;
 		while (tempNode != null && !tempNode.getKey().equals(key)) {
 			tempNode = tempNode.getNext();
 		}
 		if (tempNode == null) {
 			System.err.println("Cannot find " + key);
-			return;
 		}
-		System.out.println("Key found");
+		return tempNode;
 	}
 	
 	public void printNodes() {
