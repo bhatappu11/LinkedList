@@ -8,6 +8,7 @@ public class LinkedListMain {
 		linkedList.append(new Node<Integer>(70));
 		linkedList.insert(new Node<Integer>(30),56);
 		linkedList.pop();
+		linkedList.popLast();
 		
 		linkedList.printNodes();
 	}

@@ -52,6 +52,20 @@ public class LinkedList<K> {
 		}
 		head = head.getNext();
 	}
+	public void popLast() {
+		if(head == null || head == tail) {
+			head = null;
+			tail = null;
+		}
+		else {	
+			Node<K> tempNode = head;
+			while(tempNode.getNext()!= this.tail) {
+				tempNode = tempNode.getNext();
+			}
+			tail = tempNode;
+			tempNode.setNext(null);
+		}
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
