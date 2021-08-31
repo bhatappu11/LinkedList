@@ -73,6 +73,25 @@ public class LinkedList<K> {
 		}
 		return tempNode;
 	}
+	public void delete(K key) {
+		Node<K> keyNode = search(key);
+		if(keyNode == null) {
+			return;
+		}
+		if(head==keyNode) {
+			head=null;
+			tail=null;
+		} else {
+			Node<K> tempNode = head;
+			while(tempNode.getNext()!= keyNode) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(keyNode.getNext());
+			if(keyNode == tail) {
+				tail = tempNode;
+			}
+		}
+	}
 	
 	public void printNodes() {
 		Node<K> temp = head;
