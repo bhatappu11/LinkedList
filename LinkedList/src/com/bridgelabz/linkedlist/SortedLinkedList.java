@@ -1,10 +1,10 @@
 package com.bridgelabz.linkedlist;
 
-public class LinkedList<K> {
+public class SortedLinkedList<K extends Comparable<K>> {
 	Node<K> head;
 	Node<K> tail;
 	
-	public LinkedList() {
+	public SortedLinkedList() {
 		this.head = null;
 		this.tail = null;
 	}
@@ -12,14 +12,25 @@ public class LinkedList<K> {
 	public void add(Node<K> node) {
 		if(this.head == null) {
 			this.head = node;
-		}
-		if(this.tail == null) {
 			this.tail = node;
+		}
+		else if(head == tail) {
+			if(head.getKey().compareTo(node.getKey())>0) {
+				node.setNext(head);
+				head = node;
+			}
+			else {
+				head.setNext(node);
+				tail = node;
+			}
 		}
 		else {
 			Node<K> tempNode = this.head;
-			this.head = node;
-			this.head.setNext(tempNode);
+			while(tempNode.getNext()!=null && tempNode.getNext().getKey().compareTo(node.getKey())<0) {
+				tempNode = tempNode.getNext();
+			}
+			node.setNext(tempNode.getNext());
+			tempNode.setNext(node);
 		}
 	}
 	public void append(Node<K> node) {
@@ -109,6 +120,5 @@ public class LinkedList<K> {
 			temp = temp.getNext();
 		}
 	}
-	
-	
+
 }
